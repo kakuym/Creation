@@ -41,7 +41,6 @@ int main() {
         exit(EXIT_FAILURE);
     }
     cout << "Connected by " << inet_ntoa(client_addr.sin_addr) << ":" << ntohs(client_addr.sin_port) << endl;
-
     while (true) {
         // 接收客户端发送的数据
         int n = read(client_fd, buffer, sizeof(buffer));
