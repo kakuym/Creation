@@ -1,0 +1,30 @@
+[[ports]]
+port = 8080
+is_internal = false
+active = true
+protocol = "http"
+[languages.cpp]
+language = "cpp"
+[languages.cpp.run."creation.cpp"]
+name = "creation.cpp"
+path = "/workspace/Creation/creation.cpp"
+
+[languages.cpp.run."multithreading.cpp"]
+name = "multithreading.cpp"
+path = "/workspace/Creation/multithreading.cpp"
+
+[languages.cpp.run."main.cpp"]
+name = "main.cpp"
+path = "/workspace/Creation/main.cpp"
+
+[languages.cpp.run."server.cpp"]
+name = "server.cpp"
+path = "/workspace/Creation/server.cpp"
+
+[languages.cpp.run."Client.cpp"]
+name = "Client.cpp"
+path = "/workspace/Creation/Client.cpp"
+
+[languages.cpp.run."thread.cpp"]
+name = "thread.cpp"
+path = "/workspace/Creation/thread.cpp"
