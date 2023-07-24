@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <strings.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -15,8 +16,11 @@ int main(int argc,char *argv[]){
 
     char buf[1024]="";
     while(1){
+        bzero(buf,sizeof(buf));
         int n=read(STDIN_FILENO,buf,sizeof(buf));
         write(sock_fd,buf,n);
+        n=read(sock_fd,buf,sizeof(buf));
+        printf("%s\n",buf);
     }
 
     close(sock_fd);

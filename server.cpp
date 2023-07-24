@@ -41,6 +41,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
     cout << "Connected by " << inet_ntoa(client_addr.sin_addr) << ":" << ntohs(client_addr.sin_port) << endl;
+    char buf[1024]="";
     while (true) {
         // 接收客户端发送的数据
         int n = read(client_fd, buffer, sizeof(buffer));
@@ -50,8 +51,10 @@ int main() {
         cout << "Received from client: " << buffer << endl;
 
         // 发送数据给客户端
-        const char *message = "Hello, client";
-        write(client_fd, message, strlen(message));
+        // const char *message = "Hello, client";
+        // write(client_fd, message, strlen(message));
+        bzero(buf,sizeof(buf));
+        int n=read(STDIN_FILENO,buf,sizeof(buf));
     }
 
     close(client_fd);
