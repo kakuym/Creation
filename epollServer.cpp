@@ -73,7 +73,6 @@ int main(int argc,char *argv[]){
                             write(evs[i].data.fd,buf,n);
                         }
                     }
-                    
                 }
             }
         }
