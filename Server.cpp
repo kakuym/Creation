@@ -3,6 +3,7 @@
 #include <strings.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <cstring>
 
 int main(int argc,char *argv[]){
     int lfd=socket(AF_INET,SOCK_STREAM,0);
@@ -20,10 +21,21 @@ int main(int argc,char *argv[]){
     char buf[1024]="";
     while(1){
         bzero(buf,sizeof(buf));
-        int n=read(STDIN_FILENO,buf,sizeof(buf));
-        write(cfd,buf,n);
+        // int n=read(STDIN_FILENO,buf,sizeof(buf));
+        // write(cfd,buf,n);
+        int n=0;
         n=read(cfd,buf,sizeof(buf));
+        if(n==0){
+            printf("客户端关闭！\n");
+            break;
+        }
         printf("%s\n",buf);
+        // 去掉末尾的换行符（如果存在）
+        buf[strcspn(buf, "\n")] = '\0';
+        // 在读取的数据末尾添加 "OK"
+        strcat(buf, " OK");
+        int size = sizeof(buf);
+        write(cfd,buf,size);
     }
     close(cfd);
     close(lfd);
