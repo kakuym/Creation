@@ -33,6 +33,7 @@ int main(int argc,char *argv[]){
             printf("%s\n",buf);
         }
     }
+    
     close(cfd);
     return 0;
 }
